@@ -11,5 +11,5 @@ global t
 t = 20;
 stats = load('AK_Barrow.txt');
 global data
-data = [stats(:,9)'; 0*ones(1,k)];
+data = [stats(:,9)'; stats(:, 11)'];
 end

@@ -10,13 +10,18 @@ global data
 % plot(t(1,:), t(2,:), t(1,:), t(3,:));
 % cost(20, t(2,:), u, dt)
 % cost([6.1; 4999.7])
-Theta = fminunc(@cost, [0 5000]);
-u = hypothesis(data(1,:), Theta);
+Theta = fminunc(@cost, [0 0 0 5000])
+u = hypothesis(data(1,:), data(2,:), Theta);
 T = model(x, u, data, dt, k);
+A = sum(u)*dt /60/60/1000
+rsmd_t = sqrt(mean( (T(2, :) - t).^2 ))
 
 time = T(1, :);
-ax1 = sublplot(2,1,1);
-plot(ax1, T(1,:), T(2,:), T(1,:), T(3,:));
-ax2 = subplot(2,1,2);
-plot(sx2 
+ax1 = subplot(3,1,1);
+plot(ax1, time, T(2,:), time, T(3,:), time, data(1, :));
+ax2 = subplot(3,1,2);
+plot(ax2, time, data(2,:));
+ax3 = subplot(3,1,3);
+plot(ax3, time, u);
+
 

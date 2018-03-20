@@ -6,8 +6,8 @@ function t = model(x, u, d, dt, k)
 
 COP = 1;
 U = 1/0.287; % heat transfer coeff
-beta = 0; % fracion of solar radiation heating the room
-gamma = 0; % heating walls
+beta = 0.2; % fracion of solar radiation heating the room
+gamma = 0.8; % heating walls
 % room 8x6x2.5
 Aw = 2.5*2*6 + 2.5*2*8; % four walls
 UA = U*Aw; % heat transfer flux?
