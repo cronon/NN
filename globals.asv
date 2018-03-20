@@ -1,0 +1,15 @@
+function globals()
+global dt
+dt = 60; % 60 seconds
+global time
+time = 7*24*60*60;
+global k
+k = time / dt;
+global x
+x = [20; 0];
+global t
+t = 20;
+st
+global data
+data = [-20*ones(1, k); 0*ones(1,k)];
+end
