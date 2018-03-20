@@ -1,0 +1,15 @@
+
+% T - vector of temeratures
+function rmsd_t = cost(Theta)
+    dt = 60; % 60 seconds
+    time = 48*60*60; % 8 hours
+    k = time / dt;
+    x = [20; 0];
+    u = ones(1, k)*5000;
+    d = [-20*ones(1, k); 0*ones(1,k)];
+    
+    u = d*Theta(1)^2 + d*Theta(2)^2
+    T = model(x, u, d, dt, k);
+    
+    rmsd_t = sqrt(mean( (T - t).^2 ));
+end

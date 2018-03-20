@@ -1,0 +1,24 @@
+% cost function takes 
+
+% no heating, night
+dt = 60; % 60 seconds
+time = 48*60*60; % 8 hours
+k = time / dt;
+x = [20; 0];
+u = ones(1, k)*5000;
+d = [-20*ones(1, k); 0*ones(1,k)];
+t = model(x, u, d, dt, k);
+plot(t(1,:), t(2,:), t(1,:), t(3,:));
+cost(20, t(2,:), u, dt)
+
+u = ones(1, k)*4700;
+d = [-20*ones(1, k); 0*ones(1,k)];
+t = model(x, u, d, dt, k);
+plot(t(1,:), t(2,:), t(1,:), t(3,:));
+cost(20, t(2,:), u, dt)
+
+u = ones(1, k)*5500;
+d = [-20*ones(1, k); 0*ones(1,k)];
+t = model(x, u, d, dt, k);
+plot(t(1,:), t(2,:), t(1,:), t(3,:));
+cost(20, t(2,:), u, dt)
