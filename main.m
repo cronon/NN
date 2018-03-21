@@ -10,7 +10,7 @@ global data
 % plot(t(1,:), t(2,:), t(1,:), t(3,:));
 % cost(20, t(2,:), u, dt)
 % cost([6.1; 4999.7])
-Theta = fminunc(@cost, rand(1,27))
+Theta = fminunc(@cost, zeros(1,7))
 
 X = x;
 u = zeros(1,k);
