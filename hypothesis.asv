@@ -1,0 +1,7 @@
+function p = hypothesis(inner_t, outer_t, r, Theta)
+    th1 = reshape(Theta(1:12), 4, 3);
+    a2 = th1*[1 inner_t outer_t r]';
+    a2 = [1; a2];
+    th2 = Theta(17:19);
+    p = th2*a2;
+end
