@@ -8,7 +8,7 @@ function rmsd_t = cost(Theta)
     global i
     global T
 
-    u = hypothesis(T(1, i-100:i), data(1,i), data(2, i), Theta);
+    u = hypothesis(T(1, i-10:i), data(1,i), data(2, i), Theta);
     X = modelStep(T(1, i), u, data(:,i), dt);
 %     T = (T.*log(T) - (1-T).*log(1-T)).^2;
     rmsd_t = abs( X(1) - t);

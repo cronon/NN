@@ -14,11 +14,11 @@ global i
 global u
 global T
 u = zeros(1,k);
-T = [ones(2, 100).*X zeros(2,k)];
-
-for i = 101:k-1
-  Theta = fminsearch(@cost, zeros(1, 104), optimset('UseParallel', 1));
-  u(i) = hypothesis(T(1,i-100:i), data(1,i), data(2, i), Theta);
+T = [ zeros(2,k)];
+Theta = zeros(1, 14);
+for i = 11:k-1
+  Theta = fminsearch(@cost, Theta);
+  u(i) = hypothesis(T(1,i-10:i), data(1,i), data(2, i), Theta);
   T(:, i+1) = modelStep(T(:,i), u(i), data(:,i), dt);
 end
 
