@@ -10,16 +10,16 @@ global data
 % plot(t(1,:), t(2,:), t(1,:), t(3,:));
 % cost(20, t(2,:), u, dt)
 % cost([6.1; 4999.7])
-Theta = fminunc(@cost, rand(1,27))
-
-X = x;
+global i
+global u
+global T
 u = zeros(1,k);
-T = (zeros(2,k));
-T(:,1) = X;
-for i = 1:k
-    u(i) = hypothesis(X(1), data(1,i), data(2, i), Theta);
-    X = modelStep(X,u(i),data(:,i),dt);
-    T(:, i) = X;
+T = zeros(2,k);
+Theta = rand(1,27);
+for i = 11:k-1
+  Theta = fminsearch(@cost, Theta);
+  u(i) = NNHypothesis(T(1, i), data(1,i), data(2, i), Theta);
+  T(:, i+1) = modelStep(T(:,i), u(i), data(:,i), dt);
 end
 
 A = sum(u)*dt /60/60/1000
