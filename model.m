@@ -2,8 +2,8 @@
 % u - k-vector of power consumed by heater
 % d - 2xk matrix of temperatures outside and power of solar radiation
 % returns t - 2xk matrix room and wall temperatures
-function t = model(x, u, d, dt, k)
-
+function t = model(x, u, d, dt)
+k = length(u);
 COP = 1;
 U = 1/0.287; % heat transfer coeff
 beta = 0.2; % fracion of solar radiation heating the room

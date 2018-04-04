@@ -5,8 +5,11 @@ function rmsd_t = cost(Theta)
     global x
     global t
     global data
-    u = hypothesis(data(1,:), data(2, :), Theta);
+    u = zeros(1,k/2);
+    for i = 1:k/2
+     u(i) = NNHypothesis(20, data(1,i), data(2, i), Theta);
+    end
     W = sum(u)*dt;
-    T = model(x, u, data, dt, k);
+    T = model(x, u, data(:, 1:k/2), dt);
     rmsd_t = sqrt(mean( (T(2, :) - t).^2 ));
 end
